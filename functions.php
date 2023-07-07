@@ -91,6 +91,10 @@ function custom_area3() {
 	global $post;
 	echo '画像URL　：<input type="text" name="works_img" value="'.get_post_meta($post->ID,'works_img',true).'"><br>';
 	echo 'サイトURL：<input type="text" name="works_url" value="'.get_post_meta($post->ID,'works_url',true).'"><br>';
+	for($i = 1; $i <= 4; $i++) {
+		echo '画像'.$i.'　　：<input type="text" name="works_img'.$i.'" value="' . get_post_meta( $post->ID, 'works_img'.$i, true ) . '"><br>';
+		echo '説明文'.$i.'　：<textarea cols="50" rows="5" name="works_text'.$i.'">' . get_post_meta( $post->ID, 'works_text'.$i, true ) . '</textarea><br>';
+	}
 }
 
 //保存用処理関数
@@ -120,6 +124,10 @@ function save_custom_post($post_id){
 	save_process($post_id, 'works_img');
 	//WORKS URL
 	save_process($post_id, 'works_url');
+    for($i = 1; $i <= 4; $i++) {
+	    save_process($post_id, 'works_img'.$i);
+	    save_process($post_id, 'works_text'.$i);
+    }
 }
 /*==========================
 カスタムウィジェット
@@ -230,7 +238,7 @@ class skills_widgets extends WP_Widget {
                 <div class="c-card__head">
                     <img class="c-card__img c-card__img--skill" src="<?php echo $img_url ?>" alt="<?php echo $title; ?>">
                 </div>
-                <div class="c-card__body c-card__body--big">
+                <div class="c-card__body c-card__body--mid">
 					<?php echo $before_title.$title.$after_title; ?>
                     <p><?php echo $supplement ?></p>
                 </div>

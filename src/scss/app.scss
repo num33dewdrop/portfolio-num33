@@ -5,12 +5,13 @@ Author: TAKUYA
 Author URI: https://dewdropblog.com/
 */
 @import './src/scss/reset.css';
+
 /*===================================
 変数
 ===================================*/
 $font-size_s: 10px;
 $font-size_default: 12px;
-$font-size_m: 16px;
+$font-size_m: 18px;
 $font-size_l: 24px;
 $font-size_xl: 30px;
 $font-size_xxl: 50px;
@@ -21,12 +22,12 @@ $font-size_title: 40px;
 $font-color_default: #555;
 $font-color_sub: rgb(65, 65, 90);
 $font-color_2nd: rgb(233, 233, 243);
-$font-color_3rd:#ddd;
+$font-color_3rd: #ddd;
 
 $font-family_corp: 'Inter', sans-serif;
 $font-family_default: Quicksand, 游ゴシック体, "Yu Gothic", YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 
-$color-bg: linear-gradient(#eee,#deddf6);
+$color-bg: linear-gradient(#eee, #deddf6);
 $color-bg2: linear-gradient(to right, #b0adad, #dad5d5);
 $color-bg3: rgba(245, 245, 245, 0.9);
 $color-bg4: rgba(238, 238, 238, 0.9);
@@ -43,9 +44,9 @@ $space_sectionSp: 50px;
 $space_section: 120px;
 
 $breakPoints: (
-  'sm': 'screen and (max-width: 414px)',
-  'md': 'screen and (max-width: 768px)',
-  'lg': 'screen and (max-width: 1024px)'
+        'sm': 'screen and (max-width: 414px)',
+        'md': 'screen and (max-width: 768px)',
+        'lg': 'screen and (max-width: 1024px)'
 ) !default;
 
 @mixin mq($breakPoint: sm) {
@@ -98,17 +99,20 @@ img {
   justify-content: space-between;
   z-index: 3;
   padding: 0 $space_l;
-  @include mq() {
-    padding: 0 10%;
+  @include mq($breakPoint: md) {
+    padding: 0 5%;
   }
+
   &__title {
     font-family: $font-family_corp;
     font-size: $font-size_l;
     letter-spacing: 0.1em;
   }
-  &__link{
+
+  &__link {
     color: $font-color_3rd;
   }
+
   &__nav {
     @include mq() {
       background: rgba(255, 255, 255, .85);
@@ -126,11 +130,13 @@ img {
       }
     }
   }
+
   &__menu {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     font-family: $font-family_corp;
+
     & li a {
       padding: $space_s $space_m;
       color: $font-color_3rd;
@@ -138,6 +144,7 @@ img {
         color: $font-color_default;
       }
     }
+
     @include mq() {
       display: block;
       & li {
@@ -147,6 +154,7 @@ img {
       }
     }
   }
+
   &__menuTrigger {
     display: none;
     @include mq() {
@@ -157,6 +165,7 @@ img {
     width: 40px;
     height: 32px;
     z-index: 5;
+
     span {
       display: inline-block;
       transition: all .4s;
@@ -166,24 +175,31 @@ img {
       height: 4px;
       background-color: $font-color_3rd;
       border-radius: 4px;
+
       &:nth-of-type(1) {
         top: 0;
       }
+
       &:nth-of-type(2) {
         top: 14px;
       }
+
       &:nth-of-type(3) {
         bottom: 0;
       }
     }
+
     &.active span {
       background-color: $font-color_default;
+
       &:nth-of-type(1) {
         transform: translateY(12px) rotate(-45deg);
       }
+
       &:nth-of-type(2) {
         opacity: 0;
       }
+
       &:nth-of-type(3) {
         transform: translateY(-15px) rotate(45deg);
       }
@@ -213,12 +229,14 @@ img {
     top: 45vh;
     z-index: 1;
   }
+
   &__name {
     font-family: $font-family_corp;
     color: $font-color_sub;
     white-space: nowrap;
     padding: 0 10%;
   }
+
   &__title {
     font-size: $font-size_title;
     font-family: $font-family_corp;
@@ -228,12 +246,15 @@ img {
       font-size: $font-size_xl;
     }
   }
+
   &__description {
     color: $font-color_2nd;
   }
+
   &__banner {
     position: relative;
     overflow: hidden;
+
     &:before {
       content: "";
       display: block;
@@ -243,6 +264,7 @@ img {
       }
     }
   }
+
   &__img {
     position: absolute;
     bottom: -60%;
@@ -253,7 +275,7 @@ img {
       height: 130vh;
     }
     @include mq() {
-      top: -35%;
+      top: -55%;
       bottom: inherit;
     }
   }
@@ -265,24 +287,27 @@ img {
     flex-wrap: wrap;
     margin-bottom: $space_l;
   }
-  &__img{
+
+  &__img {
     position: absolute;
     top: 0;
     left: 0;
+
     &Container {
       border: .5px solid $color-border;
-      width: calc(100%/3 - #{$space_l});
+      width: calc(100% / 3 - #{$space_l});
       margin-right: $space_l;
       overflow: hidden;
       position: relative;
       @include mq($breakPoint: md) {
-        width: calc(100%/2 - #{$space_l});
+        width: calc(100% / 2 - #{$space_l});
       }
       @include mq() {
         width: 100%;
         margin-right: inherit;
         margin-bottom: $space_l;
       }
+
       &::before {
         content: "";
         display: block;
@@ -290,16 +315,18 @@ img {
       }
     }
   }
+
   &__text {
     white-space: pre-line;
     width: calc(100% * 2 / 3);
     @include mq($breakPoint: md) {
-      width: calc(100%/2 - #{$space_l});
+      width: calc(100% / 2 - #{$space_l});
     }
     @include mq() {
       width: 100%;
     }
   }
+
   &__name {
     margin-bottom: $space_m;
   }
@@ -346,6 +373,7 @@ img {
   position: relative;
   align-items: center;
   justify-content: center;
+
   &__title {
     font-family: $font-family_corp;
     position: absolute;
@@ -356,10 +384,12 @@ img {
     text-align: center;
     animation: text-fade 300ms infinite linear;
   }
+
   &__mail {
     position: absolute;
     right: 0;
   }
+
   &__bg {
     position: relative;
     width: 200px;
@@ -367,6 +397,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+
     &::after {
       border-radius: 40%;
       content: "";
@@ -382,6 +413,7 @@ img {
       animation: color-fade 3s infinite linear;
     }
   }
+
   &__circle {
     opacity: 0.3;
     position: absolute;
@@ -391,77 +423,129 @@ img {
     transform-origin: 50% 47%;
     border-radius: 40%;
     animation: rotation 3s infinite linear;
-    &:nth-child(2){
+
+    &:nth-child(2) {
       opacity: 0.1;
       background: #ff0;
       animation: rotation 5s infinite linear;
     }
-    &:nth-child(3){
+
+    &:nth-child(3) {
       animation: rotation 2.5s infinite linear;
     }
   }
 }
 
 .p-article {
-  display: flex;
-  flex-wrap: wrap;
   margin-bottom: $space_l;
-  &__head {
+  word-break: break-word;
+  &__imgContainer {
+    display: block;
     border: .5px solid $color-border;
-    width: calc(100%/2 - #{$space_l});
-    margin-right: $space_l;
+    width: 100%;
+    margin-bottom: $space_l;
     overflow: hidden;
     position: relative;
-    @include mq() {
-      width: 100%;
-      margin-right: inherit;
-      margin-bottom: $space_l;
-    }
+
     &::before {
       content: "";
       display: block;
       padding-top: 70%;
     }
   }
+
   &__img {
     position: absolute;
     top: 0;
     left: 0;
   }
+
   &__info {
     padding: $space_m;
     background: $color-bg2;
     overflow-wrap: break-word;
   }
+
   &__body {
-    width: calc(100%/2);
+    width: 100%;
     background: $color-bg5;
     border: 1px solid $color-border;
-    @include mq() {
-      width: 100%;
+  }
+
+  &__main {
+    padding: $space_l;
+    @include mq($breakPoint: lg) {
+      padding: $space_m;
     }
   }
-  &__main {
-    padding: $space_m;
-  }
+
   &__link {
     font-weight: bold;
     transition: all .3s ease;
+
     &:hover {
       transition: all .3s ease;
       opacity: .8;
     }
   }
+
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 $space_l $space_l;
+    @include mq($breakPoint: lg) {
+      margin: 0 $space_m $space_l;
+    }
+    & .p-article__imgContainer {
+      width: calc(40% - #{$space_l});
+      margin-right: $space_l;
+      margin-bottom: 0;
+      &::before {
+        padding-top: 100%;
+        background: #d4d4d4bd;
+      }
+      @include mq($breakPoint: lg) {
+        width: calc(50% - #{$space_l});
+      }
+      @include mq() {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: $space_m;
+      }
+    }
+  }
+  &__sub {
+    margin-top: -38px;
+    width: 60%;
+    white-space: pre-line;
+    &--full {
+      width: 100%;
+    }
+    @include mq($breakPoint: lg) {
+      width: 50%;
+    }
+    @include mq() {
+      width: 100%;
+    }
+  }
+
 }
 
 /*Component*/
 .c-container {
   padding: $space_section 10%;
-  @include mq() {
-    padding: $space_sectionSp 10%;
+  @include mq($breakPoint: md) {
+    padding: $space_sectionSp 5%;
   }
   &--full {
-    padding:$space_xl 0 0 0;
+    padding: $space_xl 0 0 0;
+  }
+
+  &--mid {
+    padding:$space_section 15%;
+    @include mq($breakPoint: md) {
+      padding: $space_sectionSp 5%;
+    }
   }
 }
 
@@ -478,8 +562,12 @@ img {
   color: $font-color_sub;
   padding-left: $space_m;
   border-bottom: 1px solid $color-border;
-  @include mq() {
+  @include mq($breakPoint: md) {
     font-size: $font-size_l;
+    margin-bottom: $space_l;
+  }
+  @include mq() {
+    font-size: $font-size_m;
     margin-bottom: $space_l;
   }
 }
@@ -491,58 +579,70 @@ img {
   @include mq() {
     margin-right: inherit;
   }
+
   &__item {
     margin-right: $space_l;
     margin-bottom: $space_l;
-    width: calc(100%/3 - #{$space_l});
+    width: calc(100% / 3 - #{$space_l});
     @include mq($breakPoint: md) {
-      width: calc(100%/2 - #{$space_l});
+      width: calc(100% / 2 - #{$space_l});
     }
     @include mq() {
       width: 100%;
       margin-right: initial;
     }
   }
+
   &__container {
     background: $color-bg3;
     border: .5px solid $color-border;
     display: block;
     transition: box-shadow .5s ease;
+
     &:hover {
       transition: box-shadow .5s ease;
       box-shadow: 2px 2px 3px #aaa;
     }
+
     &--noHover {
       &:hover {
         box-shadow: inherit;
       }
     }
+
     &--flex {
       display: flex;
     }
   }
+
   &__head {
     display: block;
     overflow: hidden;
     position: relative;
+
     &::before {
       content: "";
       display: block;
       padding-top: 70%;
     }
   }
+
   &__body {
+    min-height: 150px;
     padding: $space_m;
     border-top: .5px solid $color-border;
     background: #f6f5f4;
-    &--big {
-      height: 120px;
+
+    &--mid {
+      min-height: 120px;
     }
   }
+
   &__img {
     position: absolute;
     top: 0;
     left: 0;
+
     &--skill {
       height: 100%;
       width: 60%;
@@ -551,6 +651,7 @@ img {
       object-fit: contain;
     }
   }
+
   &__title {
     font-weight: bold;
   }
@@ -564,6 +665,7 @@ img {
     width: 100%;
     padding: 100px 10%;
   }
+
   &__input {
     background: #fff;
     width: 100%;
@@ -581,6 +683,7 @@ img {
   display: block;
   margin: 0 auto;
   transition: background 1s ease;
+
   &:hover {
     background: #777;
     transition: background 1s ease;
@@ -594,14 +697,17 @@ img {
   display: block;
   margin: 0 auto;
   transition: all .3s ease;
+
   &--spShow {
     display: none;
     @include mq() {
       display: block;
     }
   }
+
   &:hover {
     transition: all .3s ease;
+    box-shadow: 2px 2px 3px #aaa;
     opacity: .8;
   }
 }
@@ -609,11 +715,13 @@ img {
 .c-pagination {
   display: flex;
   font-weight: bold;
+
   &__link {
     &--prev {
       padding-right: $space_m;
       border-right: 1px solid $color-border2;
     }
+
     &--next {
       padding-left: $space_m;
     }
@@ -624,6 +732,7 @@ img {
   background: $color-bg;
   width: 100%;
   position: relative;
+
   &__squares {
     position: absolute;
     top: 0;
@@ -632,6 +741,7 @@ img {
     height: 100%;
     overflow: hidden;
     z-index: -1;
+
     & li {
       position: absolute;
       display: block;
@@ -642,65 +752,75 @@ img {
       animation: animate 25s linear infinite;
       bottom: -150px;
       border-radius: 100%;
-      &:nth-child(1){
+
+      &:nth-child(1) {
         left: 25%;
         width: 80px;
         height: 80px;
         animation-delay: 0s;
       }
-      &:nth-child(2){
+
+      &:nth-child(2) {
         left: 10%;
         width: 20px;
         height: 20px;
         animation-delay: 2s;
         animation-duration: 12s;
       }
-      &:nth-child(3){
+
+      &:nth-child(3) {
         left: 70%;
         width: 20px;
         height: 20px;
         animation-delay: 4s;
       }
-      &:nth-child(4){
+
+      &:nth-child(4) {
         left: 40%;
         width: 60px;
         height: 60px;
         animation-delay: 0s;
         animation-duration: 18s;
       }
-      &:nth-child(5){
+
+      &:nth-child(5) {
         left: 65%;
         width: 20px;
         height: 20px;
         animation-delay: 0s;
       }
-      &:nth-child(6){
+
+      &:nth-child(6) {
         left: 75%;
         width: 110px;
         height: 110px;
         animation-delay: 3s;
       }
-      &:nth-child(7){
+
+      &:nth-child(7) {
         left: 35%;
         width: 150px;
         height: 150px;
         animation-delay: 7s;
       }
-      &:nth-child(8){
+
+      &:nth-child(8) {
         left: 50%;
         width: 25px;
         height: 25px;
         animation-delay: 15s;
         animation-duration: 45s;
       }
-      &:nth-child(9){
+
+      &:nth-child(9) {
         left: 20%;
         width: 15px;
         height: 15px;
         animation-delay: 2s;
         animation-duration: 35s;
       }
-      &:nth-child(10){
+
+      &:nth-child(10) {
         left: 85%;
         width: 150px;
         height: 150px;
@@ -730,8 +850,10 @@ img {
     border-radius: 3px;
     padding: $space_s $space_m;
   }
+
   & .form-submit {
     margin: $space_m 0;
+
     & .submit {
       display: block;
       font-weight: bold;
@@ -739,6 +861,7 @@ img {
       padding: $space_s $space_m;
       border: 1px solid $color-border2;
       transition: all .3s ease;
+
       &:hover {
         transition: all .3s ease;
         background: $color-bg3;
@@ -751,11 +874,11 @@ img {
 
 
 @keyframes animate {
-  0%{
+  0% {
     transform: translate(0);
     opacity: 1;
   }
-  25%{
+  25% {
     transform: translate(50px, -150vh);
     opacity: .9;
   }
@@ -763,15 +886,16 @@ img {
     transform: translate(0, -300vh);
     opacity: .7;
   }
-  75%{
+  75% {
     transform: translate(-50px, -450vh);
     opacity: .5;
   }
-  100%{
+  100% {
     transform: translate(0, -600vh);
     opacity: 0;
   }
 }
+
 /* 回転アニメーション */
 @keyframes rotation {
   from {
@@ -781,6 +905,7 @@ img {
     transform: rotate(360deg);
   }
 }
+
 /* ピンク色の背景のアニメーション */
 @keyframes color-fade {
   0% {
@@ -790,6 +915,7 @@ img {
     opacity: 0.7;
   }
 }
+
 /* 点滅のアニメーション */
 @keyframes text-fade {
   0% {
@@ -817,13 +943,13 @@ img {
 
 .js-fadeIn {
   opacity: 0;
-  transform: translate(0,0);
+  transform: translate(0, 0);
   transition: all 1.5s;
 }
 
 .js-slideIn {
   opacity: 0;
-  transform: translate(0,0);
+  transform: translate(0, 0);
   width: 0;
   overflow: hidden;
   transition: all 3s;
@@ -831,10 +957,12 @@ img {
     transition: all 2s;
   }
 }
+
 .js-fadeDelay {
   &__item {
     opacity: 0;
     transition: all 1.5s;
+
     &--active {
       animation: opacityIn .6s forwards;
     }
@@ -842,9 +970,10 @@ img {
 }
 
 .js-scroll {
-  &--fadeIn{
+  &--fadeIn {
     opacity: 1;
   }
+
   &--slideIn {
     width: 100%;
     opacity: 1;
@@ -856,6 +985,12 @@ img {
     transition: all 1s ease;
     display: none;
   }
+  @include mq($breakPoint: md) {
+    &:nth-child(4) {
+      display: block;
+    }
+  }
+
   &.active {
     transition: all 1s ease;
     display: block;

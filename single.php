@@ -4,14 +4,15 @@ get_template_part( 'content', 'menu' ); ?>
 <!-- 記事の詳細画面はsingle.phpの名前のファイルが自動的に読み込まれる -->
 <main class="l-main">
     <!-- blog-->
-    <section id="work" class="c-container">
+    <section id="work" class="c-container c-container--mid">
 		<?php
 		if ( have_posts() )://投稿があるかの確認
 			while ( have_posts() ):the_post();
 				?>
                 <h2 class="c-subTitle js-slideIn"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                 <div class="p-article">
-                    <a href="<?php echo get_post_meta( $post->ID, 'works_url', true ) ?>" class="p-article__head" target="_blank">
+                    <a href="<?php echo get_post_meta( $post->ID, 'works_url', true ) ?>"
+                       class="p-article__imgContainer" target="_blank">
 						<?php if ( ! empty( get_post_meta( $post->ID, 'works_img', true ) ) ) : ?>
                             <img class="p-article__img"
                                  src="<?php echo get_post_meta( $post->ID, 'works_img', true ) ?>" alt="works-image">
@@ -22,12 +23,42 @@ get_template_part( 'content', 'menu' ); ?>
                     </a>
                     <div class="p-article__body">
                         <div class="p-article__info">
-                            <p>サイトURL：<a class="p-article__link" href="<?php echo get_post_meta( $post->ID, 'works_url', true ) ?>" target="_blank"><?php echo get_post_meta( $post->ID, 'works_url', true ) ?></a></p>
+                            <p>サイトURL：<a class="p-article__link"
+                                         href="<?php echo get_post_meta( $post->ID, 'works_url', true ) ?>"
+                                         target="_blank"><?php echo get_post_meta( $post->ID, 'works_url', true ) ?></a>
+                            </p>
                         </div>
                         <div class="p-article__main">
                             <!-- 本文表示 -->
 							<?php the_content(); ?>
                         </div>
+						<?php
+                        for ( $i = 1; $i <= 4; $i ++ ):
+                            if( ! empty( get_post_meta( $post->ID, 'works_text'.$i, true ) )) :
+                        ?>
+                            <div class="p-article__item">
+								<?php if ( ! empty( get_post_meta( $post->ID, 'works_img'.$i, true ) ) ) : ?>
+                                    <div class="p-article__imgContainer">
+                                        <img class="p-article__img"
+                                             src="<?php echo get_post_meta( $post->ID, 'works_img'.$i, true ) ?>"
+                                             alt="works-image">
+                                    </div>
+								<?php endif; ?>
+                                <div class="p-article__sub <?php if ( empty( get_post_meta( $post->ID, 'works_img'.$i, true ) ) ) echo 'p-article__sub--full'; ?>">
+                                    <!-- 本文表示 -->
+									<?php echo get_post_meta( $post->ID, 'works_text'.$i, true ) ?>
+                                </div>
+                            </div>
+                        <?php
+                            endif;
+                        endfor;
+                        ?>
+	                    <?php if( ! empty( get_post_meta( $post->ID, 'github'.$i, true ) )) :?>
+                        <div>
+                            <p>■GitHub</p>
+                            <p><a href="<?php echo get_post_meta( $post->ID, 'github'.$i, true ) ?>"><?php echo get_post_meta( $post->ID, 'github'.$i, true ) ?></a></p>
+                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
 			<?php endwhile; ?>
@@ -36,13 +67,14 @@ get_template_part( 'content', 'menu' ); ?>
                 <li class="c-pagination__link c-pagination__link--next"><?php next_post_link( '%link', 'NEXT' ); ?></li>
             </ul>
             <!--COMMENTS-->
-			<?php //comments_template(); ?>
+			<?php //comments_template();
+			?>
 		<?php else: //投稿がなかった場合?>
             <h2 class="sec-title">記事が見つかりませんでした。</h2>
 		<?php endif; ?>
     </section>
     <ul class="c-bg__squares">
-		<?php for($i = 1; $i <= 10; $i++){
+		<?php for ( $i = 1; $i <= 10; $i ++ ) {
 			echo '<li></li>';
 		} ?>
     </ul>
